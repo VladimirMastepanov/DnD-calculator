@@ -1,0 +1,19 @@
+{
+  "name": "dnd-calculator",
+  "version": "1.0.0",
+  "description": "drag-n-drop constructor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/VladimirMastepanov/DnD-calculator.git"
+  },
+  "author": "vladimirMastepanov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VladimirMastepanov/DnD-calculator/issues"
+  },
+  "homepage": "https://github.com/VladimirMastepanov/DnD-calculator#readme"
+}
