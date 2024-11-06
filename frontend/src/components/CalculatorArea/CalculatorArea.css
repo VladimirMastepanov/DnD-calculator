@@ -1,0 +1,27 @@
+.calculator-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.calculator-panel:hover {
+  background-color: #f0f8ff;
+}
+
+.calculator-panel-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4b6ef5;
+}
+
+.calculator-panel-subtitle {
+  font-size: 14px;
+  color: #888;
+  margin-top: 10px;
+}

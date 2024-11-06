@@ -1,0 +1,30 @@
+.btn-equal {
+  display: grid;
+  gap: 10px;
+  padding: 5px;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
+}
+
+.equal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px;
+  color: #ccc;
+  text-align: right;
+  border: 1px solid #5D5FEF;
+  border-radius: 8px;
+  background-color: #5D5FEF;
+  cursor: pointer;
+  filter: brightness(100%);
+  transition: filter 0.3s ease;
+
+}
+
+.equal:hover {
+  filter: brightness(90%);
+}

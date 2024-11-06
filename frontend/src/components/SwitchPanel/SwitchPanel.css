@@ -1,0 +1,71 @@
+.mode-switch-panel {
+  display: inline-flex;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  
+}
+
+.mode-button-runtime {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #555;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  filter: brightness(100%);
+  transition: filter 0.3s ease;
+}
+
+.mode-button-runtime__selected {
+  background-color: #d1daff;
+
+}
+
+.mode-button-runtime:hover {
+  filter: brightness(95%);
+
+}
+
+.mode-button-constructor {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #555;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  filter: brightness(100%);
+  transition: filter 0.3s ease;
+  /* transition: background-color 0.3s, color 0.3s; */
+}
+
+.mode-button-constructor__selected {
+  background-color: #d1daff;
+}
+
+.mode-button-constructor:hover {
+  filter: brightness(95%);
+}
+
+.icon {
+  font-size: 16px;
+}
+
+.mode-button.active {
+  background-color: #f0f8ff;
+  color: #4b6ef5;
+  font-weight: 500;
+  box-shadow: 0 0 0 2px rgba(75, 110, 245, 0.2);
+}
+
+.mode-button:not(.active):hover {
+  background-color: #f1f1f1;
+}

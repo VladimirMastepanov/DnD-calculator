@@ -1,0 +1,34 @@
+.btn-numbers-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  border: 2px;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
+}
+
+.btn-number {
+  color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 15px;
+  font-size: 20px;
+  border: 1px solid #D3D3D3;
+  border-radius: 8px;
+  background-color: #ffffff;
+  cursor: pointer;
+  filter: brightness(100%);
+  transition: filter 0.3s ease;
+}
+
+.btn-number__zero {
+  grid-column: span 2;
+}
+
+.btn-number:hover {
+  filter: brightness(90%);
+  border-color: #4b6ef5;
+}
