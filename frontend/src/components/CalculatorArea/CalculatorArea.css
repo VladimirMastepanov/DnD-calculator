@@ -12,6 +12,9 @@
   width: 280px;
   height: 552px;
   box-sizing: border-box;
+
+  position: relative;
+  min-height: 100px;
 }
 
 .calculator-panel:hover {

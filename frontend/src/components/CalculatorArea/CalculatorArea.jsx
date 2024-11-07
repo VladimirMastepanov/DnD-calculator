@@ -1,6 +1,7 @@
+import { useCallback, useRef } from 'react';
 import { useDrop } from 'react-dnd';
 import { useAtom } from 'jotai';
-import { droppedComponentsList } from '../../state/atoms.js';
+import { droppedComponentsList, modeAtom, MODES } from '../../state/atoms.js';
 import cn from 'classnames'
 import Display from '../Display/Display.jsx';
 import Operations from '../Operations/Operations.jsx';
@@ -8,42 +9,77 @@ import Numbers from '../Numbers/Numbers.jsx';
 import Equal from '../Equal/Equal.jsx';
 import './CalculatorArea.css';
 
+const ComponentsMap = {
+  Display,
+  Operations,
+  Numbers,
+  Equal,
+}
+
 const CalculatorArea = () => {
-  const [droppedComponents, setComponents] = useAtom(droppedComponentsList);
+  const [mode] = useAtom(modeAtom);
+  const [droppedComponents, setDroppedComponents] = useAtom(droppedComponentsList);
+  const dropRef = useRef(null);
 
   const [{ isOver }, drop] = useDrop(() => ({
     accept: 'COMPONENT',
-    drop: (item) => {
-      let component;
-      switch (item.componentType) {
-        case 'Display':
-          component = <Display key='Display' />;
-          break;
-        case 'Operations':
-          component = <Operations key='Operations' />;
-          break;
-        case 'Numbers':
-          component = <Numbers key='Numbers' />;
-          break;
-        case 'Equal':
-          component = <Equal key='Equal' />;
-          break;
-        default:
-          return;
+    canDrop: () => mode === MODES.CONSTRUCTOR,
+    drop: (item, monitor) => {
+      if (mode !== MODES.CONSTRUCTOR) return;
+
+      const offset = monitor.getClientOffset();
+      if (!offset) return;
+
+      const dropTargetRect = dropRef.current?.getBoundingClientRect();
+      if (!dropTargetRect) return;
+
+      const relativePosition = {
+        x: offset.x - dropTargetRect.left,
+        y: offset.y - dropTargetRect.top,
+      };
+
+      const componentExist = droppedComponents.some(
+        comp => comp.type === item.componentType
+      );
+
+      if (!componentExist) {
+        const newComponent = {
+          id: item.id,
+          type: item.componentType,
+          position: relativePosition,
+        };
+        setDroppedComponents((prev) => [...prev, newComponent]);
       }
-      setComponents((prev) => [...prev, component]);
-      item.setDragged(true);
     },
     collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
+      isOver: mode === MODES.CONSTRUCTOR && !!monitor.isOver(),
     }),
-  }));
+  }), [droppedComponents, mode]);
 
+  const renderComponent = useCallback((component) => {
+    const Component = ComponentsMap[component.type];
+    if (!Component) return null;
 
+    return (
+      <Component
+      key={component.type}
+      style={{
+        position: 'absolute',
+        top: component.position.y,
+        left: component.position.x,
+      }}
+      />
+    );
+  }, []);
+
+  const setRef = (element) => {
+    dropRef.current = element;
+    drop(element);
+  };
 
   return (
     <div
-      ref={drop}
+      ref={setRef}
       className={cn({
         'calculator-panel-filled': droppedComponents.length > 0,
         'calculator-panel': droppedComponents.length === 0,
@@ -56,7 +92,7 @@ const CalculatorArea = () => {
           <p className="calculator-panel-subtitle">любой элемент из левой панели</p>
         </>
       ) : (
-        droppedComponents
+        droppedComponents.map(renderComponent)
       )}
     </div>
   );
