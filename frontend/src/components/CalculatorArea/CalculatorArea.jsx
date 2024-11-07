@@ -1,6 +1,7 @@
 import { useDrop } from 'react-dnd';
 import { useAtom } from 'jotai';
 import { droppedComponentsList } from '../../state/atoms.js';
+import cn from 'classnames'
 import Display from '../Display/Display.jsx';
 import Operations from '../Operations/Operations.jsx';
 import Numbers from '../Numbers/Numbers.jsx';
@@ -43,7 +44,11 @@ const CalculatorArea = () => {
   return (
     <div
       ref={drop}
-      className={`calculator-panel ${isOver ? 'hover' : ''}`}
+      className={cn({
+        'calculator-panel-filled': droppedComponents.length > 0,
+        'calculator-panel': droppedComponents.length === 0,
+        'hover': isOver,
+      })}
     >
       {droppedComponents.length === 0 ? (
         <>

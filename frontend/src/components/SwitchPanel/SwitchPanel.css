@@ -23,8 +23,8 @@
 }
 
 .mode-button-runtime__selected {
-  background-color: #d1daff;
-
+  background-color: #4b6ef5;
+  color: #ffffff;
 }
 
 .mode-button-runtime:hover {
@@ -48,7 +48,8 @@
 }
 
 .mode-button-constructor__selected {
-  background-color: #d1daff;
+  background-color: #4b6ef5;
+  color: #ffffff;
 }
 
 .mode-button-constructor:hover {

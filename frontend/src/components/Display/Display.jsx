@@ -1,13 +1,18 @@
 import './Display.css';
 import { useAtom } from 'jotai';
-import { displayValueAtom } from '../../state/atoms.js';
-
+import { displayValueAtom, modeAtom } from '../../state/atoms.js';
+import cn from 'classnames';
 
 const Display = () => {
 const [displayValue] = useAtom(displayValueAtom);
+const [mode] = useAtom(modeAtom);
+
+
 
   return (
-    <div className='display-container'>
+    <div className={cn('display-container', {
+      'display-container__constructor': mode === 'constructor',
+    })}>
       <div className="display">{displayValue}</div>
     </div>
   )

@@ -11,7 +11,7 @@
   justify-content: center;
   padding: 50px;
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-color: #ffffff;
 }
 
 .layout {
@@ -19,11 +19,11 @@
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   width: 100%;
-  max-width: 750px;
+  max-width: 500px;
 }
 
 .constructor-panel {
-  border: 1px dashed #ccc;
+  /* border: 1px dashed #ccc; */
   border-radius: 8px;
   padding: 20px;
   background-color: #ffffff;

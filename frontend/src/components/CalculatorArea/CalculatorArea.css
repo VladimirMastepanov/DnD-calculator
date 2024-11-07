@@ -8,6 +8,10 @@
   border-radius: 8px;
   padding: 20px;
   background-color: #ffffff;
+
+  width: 280px;
+  height: 552px;
+  box-sizing: border-box;
 }
 
 .calculator-panel:hover {
@@ -24,4 +28,20 @@
   font-size: 14px;
   color: #888;
   margin-top: 10px;
+}
+
+.calculator-panel-filled {
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #ffffff;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+  width: 280px;
+  height: 552px;
+  box-sizing: border-box;
+}
+
+.hover {
+  background-color: #e6f7ff;
 }
