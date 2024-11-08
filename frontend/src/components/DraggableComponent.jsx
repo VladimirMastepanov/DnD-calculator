@@ -2,22 +2,23 @@ import { useDrag } from "react-dnd";
 import { useAtom } from "jotai";
 import { droppedComponentsList, modeAtom, MODES } from "../state/atoms";
 
-const DraggableComponent = ({ componentType, children, style }) => {
+const DraggableComponent = ({ componentType, children, style, isDropped = false, id = null }) => {
   const [mode] = useAtom(modeAtom);
   const [droppedComponents] = useAtom(droppedComponentsList);
 
-  const isAlreadyDropped = droppedComponents.some(
-    comp => comp.type === componentType
-  );
+
+  const isAlreadyDropped = droppedComponents.some((comp) => comp.type === componentType && !isDropped);
+  // console.log(mode);
+  // console.log(droppedComponents);
 
   const [{ isDragging }, drag] = useDrag(() => ({
-    type: 'COMPONENT',
-    item: { componentType },
-    canDrag: mode === MODES.CONSTRUCTOR && !isAlreadyDropped,
+    type: isDropped ? 'DROPPED_COMPONENT' : 'COMPONENT',
+    item: { componentType, isDropped, id },
+    canDrag: mode === MODES.CONSTRUCTOR && (!isAlreadyDropped || isDropped),
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
-  }), [componentType, mode, isAlreadyDropped]);
+  }), [componentType, mode, isAlreadyDropped, isDropped, id]);
 
   if (mode === MODES.RUNTIME) {
     return children;
@@ -27,8 +28,10 @@ const DraggableComponent = ({ componentType, children, style }) => {
     <div
       ref={drag}
       style={{
-        opacity: isDragging || isAlreadyDropped ? 0.5 : 1,
-        cursor: isAlreadyDropped ? 'not-allowed' : 'move',
+        opacity: isDragging ? 0.5 : 1,
+        cursor: isAlreadyDropped && !isDropped ? 'not-allowed' : 'move',
+        position: isDropped ? 'absolute' : 'relative',
+        zIndex: isDragging ? 1000 : 'auto',
         ...style,
       }}
     >

@@ -4,21 +4,21 @@ import cn from 'classnames'
 import './Operations.css';
 
 const Operations = () => {
-const [mode] = useAtom(modeAtom);
+  const [mode] = useAtom(modeAtom);
 
-const btnClass = cn({
-  'btn-operation': mode === 'runtime',
-  'btn-operation__constructor': mode === 'constructor'
-})
+  const btnClass = cn({
+    'btn-operation': mode === 'runtime',
+    'btn-operation__constructor': mode === 'constructor'
+  })
   return (
-    <div className={cn('btn-operations-group',{
+    <div className={cn('btn-operations-group', {
       'btn-operations-group__constructor': mode === 'constructor',
     })} >
-    <button className={btnClass}>/</button>
-    <button className={btnClass}>x</button>
-    <button className={btnClass}>-</button>
-    <button className={btnClass}>+</button>
-  </div>
+      <button className={btnClass} >/</button>
+      <button className={btnClass} >x</button>
+      <button className={btnClass} >-</button>
+      <button className={btnClass} >+</button>
+    </div>
   )
 }
 
