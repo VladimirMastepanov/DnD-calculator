@@ -1,19 +1,19 @@
 import { useAtom } from 'jotai';
 import cn from 'classnames'
 import './Numbers.css';
-import { modeAtom } from '../../state/atoms';
+import { modeAtom, MODES } from '../../state/atoms';
 
 const Numbers = () => {
   const [mode] = useAtom(modeAtom);
 
   const btnClass = cn({
-    'btn-number': mode === 'runtime',
-    'btn-number__constructor': mode === 'constructor'
+    'btn-number': mode === MODES.RUNTIME,
+    'btn-number__constructor': mode === MODES.CONSTRUCTOR
   });
 
   return (
     <div className={cn('btn-numbers-group', {
-      'btn-number-group__constructor': mode === 'constructor',
+      'btn-number-group__constructor': mode === MODES.CONSTRUCTOR,
     })}>
       <button className={btnClass} >7</button>
       <button className={btnClass}>8</button>

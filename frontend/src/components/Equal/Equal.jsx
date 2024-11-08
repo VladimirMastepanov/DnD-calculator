@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { modeAtom } from '../../state/atoms';
+import { modeAtom, MODES } from '../../state/atoms';
 import cn from 'classnames'
 import './Equal.css';
 
@@ -8,10 +8,10 @@ const [mode] = useAtom(modeAtom);
 
   return (
     <div className={cn('btn-equal', {
-      'btn-equal__constructor': mode === 'constructor',
+      'btn-equal__constructor': mode === MODES.CONSTRUCTOR,
     })}>
       <button className={cn('equal', {
-        'equal__constructor': mode === 'constructor',
+        'equal__constructor': mode === MODES.CONSTRUCTOR,
       })}>=</button>
     </div>
   )

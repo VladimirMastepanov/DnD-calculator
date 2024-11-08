@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { modeAtom } from '../../state/atoms';
+import { modeAtom, MODES } from '../../state/atoms';
 import cn from 'classnames'
 import './Operations.css';
 
@@ -7,12 +7,12 @@ const Operations = () => {
   const [mode] = useAtom(modeAtom);
 
   const btnClass = cn({
-    'btn-operation': mode === 'runtime',
-    'btn-operation__constructor': mode === 'constructor'
+    'btn-operation': mode === MODES.RUNTIME,
+    'btn-operation__constructor': mode === MODES.CONSTRUCTOR
   })
   return (
     <div className={cn('btn-operations-group', {
-      'btn-operations-group__constructor': mode === 'constructor',
+      'btn-operations-group__constructor': mode === MODES.CONSTRUCTOR,
     })} >
       <button className={btnClass} >/</button>
       <button className={btnClass} >x</button>
