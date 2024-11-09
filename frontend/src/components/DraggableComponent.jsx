@@ -6,17 +6,14 @@ const DraggableComponent = ({ componentType, children, style, isDropped = false,
   const [mode] = useAtom(modeAtom);
   const [droppedComponents] = useAtom(droppedComponentsList);
 
-
   const isAlreadyDropped = droppedComponents.some((comp) => comp.type === componentType && !isDropped);
-  // console.log(mode);
-  // console.log(droppedComponents);
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: isDropped ? 'DROPPED_COMPONENT' : 'COMPONENT',
     item: { componentType, isDropped, id },
     canDrag: mode === MODES.CONSTRUCTOR && (!isAlreadyDropped || isDropped),
     collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
+      isDragging: monitor.isDragging(),
     }),
   }), [componentType, mode, isAlreadyDropped, isDropped, id]);
 

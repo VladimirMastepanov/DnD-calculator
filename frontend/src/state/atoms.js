@@ -10,7 +10,10 @@ export const COMPONENTS_TYPE = {
   OPERATIONS: 'Operations',
   NUMBERS: 'Numbers',
   EQUAL: 'Equal',
-}
+};
+
+export const PANEL_PADDING = 20;
+export const COMPONENT_GAP = 15;
 
 export const modeAtom = atom(MODES.CONSTRUCTOR); 
 export const displayValueAtom = atom('0');
