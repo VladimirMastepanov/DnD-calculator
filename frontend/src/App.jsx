@@ -13,22 +13,17 @@ const App = () => {
     <>
       <DndProvider backend={HTML5Backend}>
         <div className="app">
-
           <SwitchPanel />
-
           <div className="layout">
-
             <div className="constructor-panel">
               <DraggableComponentsList />
             </div>
-
             <CalculatorArea />
-
           </div>
         </div>
       </DndProvider>
     </>
   )
-}
+};
 
-export default App
+export default App;

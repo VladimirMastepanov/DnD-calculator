@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import './Display.css';
 import { useAtom } from 'jotai';
-import { displayValueAtom, modeAtom } from '../../state/atoms.js';
+import { displayValueAtom, modeAtom, MODES } from '../../state/atoms.js';
 import cn from 'classnames';
 
 const Display = () => {
@@ -11,11 +12,11 @@ const [mode] = useAtom(modeAtom);
 
   return (
     <div className={cn('display-container', {
-      'display-container__constructor': mode === 'constructor',
+      'display-container__constructor': mode === MODES.CONSTRUCTOR,
     })}>
       <div className="display">{displayValue}</div>
     </div>
   )
 };
 
-export default Display;
+export default memo(Display);
