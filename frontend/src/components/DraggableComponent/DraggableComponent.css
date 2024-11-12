@@ -1,0 +1,19 @@
+.draggable-component {
+  position: relative;
+  z-index: auto;
+  transition: opacity 0.3s ease;
+}
+
+.draggable-component.is-dragging {
+  opacity: 0.5;
+  cursor: move;
+  z-index: 1000;
+}
+
+.draggable-component.is-dropped {
+  opacity: 1;
+}
+
+.draggable-component.not-allowed {
+  cursor: not-allowed;
+}

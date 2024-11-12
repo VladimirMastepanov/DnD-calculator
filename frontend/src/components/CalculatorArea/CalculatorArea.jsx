@@ -11,11 +11,9 @@ import {
 import cn from 'classnames';
 import { ComponentsMap, getComponentDimensions } from '../../assets/utils.js';
 import './CalculatorArea.css';
-import DraggableComponent from '../DraggableComponent.jsx';
+import DraggableComponent from '../DraggableComponent/DraggableComponent.jsx';
 import DropPreview from '../DropPreview/DropPreview.jsx';
 
-// const PANEL_PADDING = 20;
-// const COMPONENT_GAP = 15;
 
 const CalculatorArea = () => {
   const [mode] = useAtom(modeAtom);
@@ -76,7 +74,7 @@ const CalculatorArea = () => {
         };
         setDroppedComponents((prev) => {
           const newComponents = [...prev, newComponent];
-          return arrangeComponents(newComponents); // вызываем arrangeComponents внутри setDroppedComponents
+          return arrangeComponents(newComponents); 
         });
       }
 
@@ -114,7 +112,6 @@ const CalculatorArea = () => {
   const renderComponent = useCallback((component) => {
     const Component = ComponentsMap[component.type];
     if (!Component) return null;
-    const dimensions = getComponentDimensions(component.type);
 
     return (
       <DraggableComponent
@@ -122,13 +119,6 @@ const CalculatorArea = () => {
         componentType={component.type}
         id={component.id}
         isDropped={true}
-        style={{
-          position: 'absolute',
-          top: component.position.y,
-          left: component.position.x,
-          width: dimensions.width,
-          height: dimensions.height,
-        }}
       >
         <Component />
       </DraggableComponent>

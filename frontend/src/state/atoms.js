@@ -13,6 +13,7 @@ export const COMPONENTS_TYPE = {
 };
 
 export const PANEL_PADDING = 20;
+
 export const COMPONENT_GAP = 15;
 
 export const modeAtom = atom(MODES.CONSTRUCTOR); 

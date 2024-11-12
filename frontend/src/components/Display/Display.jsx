@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import './Display.css';
 import { useAtom } from 'jotai';
 import { displayValueAtom, modeAtom, MODES } from '../../state/atoms.js';
@@ -18,4 +19,4 @@ const [mode] = useAtom(modeAtom);
   )
 };
 
-export default Display;
+export default memo(Display);

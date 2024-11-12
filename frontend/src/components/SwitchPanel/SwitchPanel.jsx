@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import './SwitchPanel.css';
 import { useAtom } from 'jotai';
 import cn from 'classnames';
@@ -6,9 +7,10 @@ import { modeAtom, MODES } from '../../state/atoms';
 const SwitchPanel = () => {
 const [mode, setMode] = useAtom(modeAtom)
 
-const handleSetConstructorMode = () => setMode(MODES.CONSTRUCTOR)
+const handleSetConstructorMode = () => setMode(MODES.CONSTRUCTOR);
 
-const handleSetRuntimeMode = () => setMode(MODES.RUNTIME)
+
+const handleSetRuntimeMode = () => setMode(MODES.RUNTIME);
 
   return (
     <div className="mode-switch-panel">
@@ -27,4 +29,4 @@ const handleSetRuntimeMode = () => setMode(MODES.RUNTIME)
   )
 };
 
-export default SwitchPanel;
+export default memo(SwitchPanel);

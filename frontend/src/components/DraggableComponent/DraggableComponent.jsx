@@ -1,12 +1,14 @@
 import { useDrag } from "react-dnd";
 import { useAtom } from "jotai";
-import { droppedComponentsList, modeAtom, MODES } from "../state/atoms";
+import cn from 'classnames';
+import { droppedComponentsList, modeAtom, MODES } from "../../state/atoms";
+import './DraggableComponent.css';
 
-const DraggableComponent = ({ componentType, children, style, isDropped = false, id = null }) => {
+const DraggableComponent = ({ componentType, children, isDropped = false, id = null }) => {
   const [mode] = useAtom(modeAtom);
   const [droppedComponents] = useAtom(droppedComponentsList);
 
-  const isAlreadyDropped = droppedComponents.some((comp) => comp.type === componentType && !isDropped);
+  const isAlreadyDropped = droppedComponents.some((comp) => comp.type === componentType);
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: isDropped ? 'DROPPED_COMPONENT' : 'COMPONENT',
@@ -21,17 +23,14 @@ const DraggableComponent = ({ componentType, children, style, isDropped = false,
     return children;
   }
 
+  const componentClass = cn('draggable-component', {
+    'is-dragging': isDragging,
+    'is-dropped': isDropped,
+    'not-allowed': isAlreadyDropped && !isDropped
+  });
+
   return (
-    <div
-      ref={drag}
-      style={{
-        opacity: isDragging ? 0.5 : 1,
-        cursor: isAlreadyDropped && !isDropped ? 'not-allowed' : 'move',
-        position: isDropped ? 'absolute' : 'relative',
-        zIndex: isDragging ? 1000 : 'auto',
-        ...style,
-      }}
-    >
+    <div ref={drag} className={componentClass}>
       {children}
     </div>
   )

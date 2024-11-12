@@ -1,6 +1,6 @@
 import { useAtom } from "jotai";
 import { modeAtom, MODES, COMPONENTS_TYPE } from "../state/atoms.js";
-import DraggableComponent from "./DraggableComponent.jsx";
+import DraggableComponent from "./DraggableComponent/DraggableComponent.jsx";
 import Display from "./Display/Display.jsx";
 import Equal from "./Equal/Equal.jsx";
 import Numbers from "./Numbers/Numbers.jsx";
@@ -10,7 +10,7 @@ const DraggableComponentsList = () => {
 
   const [mode] = useAtom(modeAtom);
 
-  if ( mode === MODES.RUNTIME) {
+  if (mode === MODES.RUNTIME) {
     return null;
   }
 

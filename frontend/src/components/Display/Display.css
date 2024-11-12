@@ -1,7 +1,6 @@
 .display-container {
   border-radius: 8px;
   padding: 5px;
-  box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
   margin-top: 15px;
   width: 240px;
   height: 60px;
@@ -9,6 +8,7 @@
 }
 
 .display-container__constructor {
+  box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
   filter: brightness(100%);
   transition: filter 0.3s ease;
 }
@@ -23,7 +23,6 @@
   text-align: right;
   color: #333333;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 100%;
   box-sizing: border-box;
 }
