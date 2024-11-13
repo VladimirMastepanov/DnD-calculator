@@ -1,5 +1,6 @@
 import { useDrag } from "react-dnd";
 import { useAtom } from "jotai";
+import PropTypes from "prop-types";
 import cn from 'classnames';
 import { droppedComponentsList, modeAtom, MODES } from "../../state/atoms";
 import './DraggableComponent.css';
@@ -34,6 +35,13 @@ const DraggableComponent = ({ componentType, children, isDropped = false, id = n
       {children}
     </div>
   )
+};
+
+DraggableComponent.propTypes = {
+  componentType: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  isDropped: PropTypes.bool,
+  id: PropTypes.string,
 };
 
 export default DraggableComponent;

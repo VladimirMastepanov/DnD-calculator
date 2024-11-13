@@ -1,6 +1,7 @@
 {
   "name": "dnd-calculator",
   "version": "1.0.0",
+  "type": "module",
   "description": "drag-n-drop constructor",
   "main": "index.js",
   "scripts": {

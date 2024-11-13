@@ -34,7 +34,11 @@ const Numbers = () => {
     }
   };
 
-  const handleClear = () => setDisplayValue('0');
+  const handleClear = () => {
+    if (mode === MODES.RUNTIME) {
+      setDisplayValue('0');
+    }
+  };
 
   return (
     <div onClick={pressNumber} className={cn('btn-numbers-group', {

@@ -1,13 +1,14 @@
 import { memo } from 'react';
 import { useAtom } from 'jotai';
 import { modeAtom, MODES, displayValueAtom } from '../../state/atoms';
-import cn from 'classnames'
+import cn from 'classnames';
 import './Equal.css';
 
 const Equal = () => {
   const [mode] = useAtom(modeAtom);
   const [displayValue, setDisplayValue] = useAtom(displayValueAtom);
   const operators = ['+', '-', '*', '/'];
+  const MAX_LENGTH = 15;
 
   const calculateSingleOperation = (a, operator, b) => {
     switch (operator) {
@@ -19,37 +20,39 @@ const Equal = () => {
         return a * b;
       case '/':
         if (b === 0) return 'Bad idea';
-        return a / b;
+        return parseFloat(a / b).toFixed(13);
       default:
-        return 'Error: Invalid operator';
+        return 'Invalid operator';
     }
   };
 
   const calculateExpression = (expression) => {
     const parts = expression.split(/([-+*/])/).filter(Boolean);
+  
     let stack = [];
-
-    // Выполняем умножение и деление сначала
-    for (let i = 0; i < parts.length; i++) {
+  
+    for (let i = 0; i < parts.length; i += 1) {
       if (operators.includes(parts[i])) {
         const operator = parts[i];
         const prev = parseFloat(stack.pop());
-        const next = parseFloat(parts[++i]);
-
+        const next = parseFloat(parts[i + 1]);
+  
         if (operator === '*' || operator === '/') {
-          const result = calculateSingleOperation(prev, operator, next);
-          console.log(result);
-          stack.push(result);
+          stack.push(calculateSingleOperation(prev, operator, next));
+          i += 1;
         } else {
-          stack.push(prev, operator); // Для сложения и вычитания
-          stack.push(next);
+          stack.push(prev, operator);
         }
       } else {
-        stack.push(parseFloat(parts[i]));
+        const num = parseFloat(parts[i]);
+        if (!isNaN(num)) {
+          stack.push(num);
+        } else {
+          return 'Invalid expression';
+        }
       }
     }
-
-    // Выполняем сложение и вычитание
+  
     let result = stack[0];
     for (let i = 1; i < stack.length; i += 2) {
       const operator = stack[i];
@@ -62,9 +65,19 @@ const Equal = () => {
   const handlePressEqual = () => {
     if (operators.includes(displayValue.slice(-1))) {
       const newValue = displayValue.slice(0, -1);
-      setDisplayValue(calculateExpression(newValue));
+      const res = calculateExpression(newValue);
+      setDisplayValue(
+        res.length >= MAX_LENGTH
+          ? res.slice(0, MAX_LENGTH)
+          : res
+      );
     } else {
-      setDisplayValue(calculateExpression(displayValue))
+      const res = calculateExpression(displayValue);
+      setDisplayValue(
+        res.length >= MAX_LENGTH
+          ? res.slice(0, MAX_LENGTH)
+          : res
+      );
     }
   };
 

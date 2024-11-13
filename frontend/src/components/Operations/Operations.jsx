@@ -10,8 +10,8 @@ const Operations = () => {
 
   const getButtonClassName = cn({
     'btn-operation': mode === MODES.RUNTIME,
-    'btn-operation__constructor': mode === MODES.CONSTRUCTOR
-  })
+    'btn-operation__constructor': mode === MODES.CONSTRUCTOR,
+  });
 
   const operators = ['+', '-', '*', '/'];
 
@@ -41,6 +41,6 @@ const Operations = () => {
       <button className={getButtonClassName} value='+'>+</button>
     </div>
   )
-}
+};
 
 export default memo(Operations);

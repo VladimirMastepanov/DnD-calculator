@@ -1,0 +1,8 @@
+.constructor-panel {
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #ffffff;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+}

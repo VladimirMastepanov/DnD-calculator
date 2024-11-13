@@ -1,0 +1,13 @@
+.icon_run {
+  width: 16px;
+  height: auto;
+  margin-right: 5px;
+fill: white;
+}
+
+.icon_const {
+  width: 16px;
+  height: auto;
+  margin-right: 5px;
+ fill: #555;
+}

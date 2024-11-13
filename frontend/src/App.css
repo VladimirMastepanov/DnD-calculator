@@ -19,22 +19,9 @@
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
 }
 
-.constructor-panel {
-  /* border: 1px dashed #ccc; */
-  border-radius: 8px;
-  padding: 20px;
-  background-color: #ffffff;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 10px;
-}
-
-
-
-/* Адаптивность */
 @media (max-width: 768px) {
   .layout {
     grid-template-columns: 1fr;

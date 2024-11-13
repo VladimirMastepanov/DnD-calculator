@@ -1,5 +1,3 @@
-import { useAtom } from "jotai";
-import { displayValueAtom } from "../state/atoms.js";
 import Display from "../components/Display/Display.jsx";
 import Operations from "../components/Operations/Operations.jsx";
 import Numbers from "../components/Numbers/Numbers.jsx";
@@ -22,12 +20,3 @@ export const ComponentsMap = {
   return dimensions[componentType];
 };
 
-export const displayMapping = (value) => {
-  if (displayValue === '0' && value !== '+' && value !== '*' && value !== '/') {
-    if (displayValue === '0' && value !== '.') {
-      setDisplayValue(value)
-    } else if (value !== '.' || !displayValue.includes(value)) {
-      setDisplayValue(`${displayValue}${value}`);
-    }
-  }
-};

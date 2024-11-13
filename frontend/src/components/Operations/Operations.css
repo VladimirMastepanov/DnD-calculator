@@ -11,12 +11,10 @@
   width: 240px;
   height: 56px;
   padding: 4px;
-
 }
 
 .btn-operations-group__constructor {
   box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
-
   filter: brightness(100%);
   transition: filter 0.3s ease;
 }
@@ -28,8 +26,6 @@
 
 .btn-operation,
 .btn-operation__constructor {
-
-
   color: #333333;
   display: flex;
   align-items: center;

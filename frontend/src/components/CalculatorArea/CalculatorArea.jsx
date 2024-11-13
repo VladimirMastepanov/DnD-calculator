@@ -22,7 +22,7 @@ const CalculatorArea = () => {
   const [previewPosition, setPreviewPosition] = useState(null);
   const [previewComponent, setPreviewComponent] = useState(null);
 
-  const arrangeComponents = (components) => {
+  const arrangeComponents = useCallback((components) => {
     const arranged = [...components];
     arranged.sort((a, b) => a.position.y - b.position.y);
 
@@ -42,7 +42,7 @@ const CalculatorArea = () => {
       nextY = componentPosition.y + dimensions.height + COMPONENT_GAP;
     }
     return result;
-  };
+  }, []);
 
   const [{ isOver }, drop] = useDrop(() => ({
     accept: ['COMPONENT', 'DROPPED_COMPONENT'],
@@ -74,7 +74,7 @@ const CalculatorArea = () => {
         };
         setDroppedComponents((prev) => {
           const newComponents = [...prev, newComponent];
-          return arrangeComponents(newComponents); 
+          return arrangeComponents(newComponents);
         });
       }
 
@@ -94,7 +94,7 @@ const CalculatorArea = () => {
       );
       return arrangeComponents(updatedComponents);
     });
-  }, [arrangeComponents]);
+  }, [arrangeComponents, setDroppedComponents]);
 
   const getRelativePosition = (clientOffset) => {
     const dropTargetRect = dropRef.current?.getBoundingClientRect();

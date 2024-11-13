@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { ComponentsMap, getComponentDimensions } from "../../assets/utils";
 import './DropPreview.css'
 
@@ -19,5 +20,12 @@ const DropPreview = ({ position, componentType }) => {
   );
 };
 
-export default DropPreview;
+DropPreview.propTypes = {
+  position: PropTypes.shape({
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
+  }).isRequired,
+  componentType: PropTypes.string.isRequired,
+};
 
+export default DropPreview;

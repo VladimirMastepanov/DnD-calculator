@@ -3,9 +3,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import './App.css'
 import SwitchPanel from './components/SwitchPanel/SwitchPanel.jsx';
 import CalculatorArea from './components/CalculatorArea/CalculatorArea.jsx';
-import DraggableComponentsList from './components/DraggebleComponentsList.jsx';
-
-
+import DraggableComponentsList from './components/DraggableComponentsList/DraggableComponentsList.jsx';
 
 const App = () => {
 
@@ -15,7 +13,7 @@ const App = () => {
         <div className="app">
           <SwitchPanel />
           <div className="layout">
-            <div className="constructor-panel">
+            <div>
               <DraggableComponentsList />
             </div>
             <CalculatorArea />
