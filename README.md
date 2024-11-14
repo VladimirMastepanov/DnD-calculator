@@ -1,7 +1,9 @@
 ### DnD-calculator
 ___
 <img width="767" alt="Снимок экрана 2024-11-14 в 13 42 25" src="https://github.com/user-attachments/assets/8587546e-955a-4ede-a6f6-cfcc83246333">
+
 DnD-calculator is an interactive React application that allows users to build a custom calculator by arranging components in "Constructor Mode" and then using it in "Runtime Mode." This project demonstrates the power of drag-and-drop interfaces and provides a flexible, hands-on experience for users.
+
 
 <img width="769" alt="Снимок экрана 2024-11-14 в 13 42 56" src="https://github.com/user-attachments/assets/437b1a9d-750f-4e97-87f9-db128e9fa6c1">
 
