@@ -140,8 +140,8 @@ const CalculatorArea = () => {
     >
       {droppedComponents.length === 0 ? (
         <>
-          <p className="calculator-panel-title">Перетащите сюда</p>
-          <p className="calculator-panel-subtitle">любой элемент из левой панели</p>
+          <p className="calculator-panel-title">Drag here</p>
+          <p className="calculator-panel-subtitle">any element from the left panel</p>
         </>
       ) : (
         droppedComponents.map(renderComponent)

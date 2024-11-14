@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "bootstrap": "^5.3.3",
     "classnames": "^2.5.1",
     "jotai": "^2.10.1",
     "prop-types": "^15.8.1",
